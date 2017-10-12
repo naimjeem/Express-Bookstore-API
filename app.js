@@ -29,6 +29,13 @@ app.get('/api/books', (req, res) => {
   });
 });
 
+app.get('/api/books/:_id', (req, res) => {
+  Book.getBookById(req.params._id, (err, book) => {
+    if (err) throw err;
+    res.json(book);
+  });
+});
+
 //Set Port
 const port = process.env.PORT || '3001';
 app.set('port', port);
