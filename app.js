@@ -7,6 +7,8 @@ const Book = require('./models/book');
 
 let app = express();
 
+app.use(bodyParser.json());
+
 mongoose.connect('mongodb://localhost/bookstore');
 
 let db = mongoose.connection;
@@ -19,6 +21,15 @@ app.get('/api/genres', (req, res) => {
   Genre.getGenres((err, genres) => {
     if (err) throw err;
     res.json(genres);
+  });
+});
+
+app.post('/api/genres', (req, res) => {
+  let genre = req.body;
+
+  Genre.addGenre(genre, (err, genre) => {
+    if (err) throw err;
+    res.json(genre);
   });
 });
 
