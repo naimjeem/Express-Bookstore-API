@@ -47,6 +47,15 @@ app.get('/api/books/:_id', (req, res) => {
   });
 });
 
+app.post('/api/books', (req, res) => {
+  let book = req.body;
+
+  Book.addBook(book, (err, book) => {
+    if (err) throw err;
+    res.json(book);
+  });
+});
+
 //Set Port
 const port = process.env.PORT || '3001';
 app.set('port', port);

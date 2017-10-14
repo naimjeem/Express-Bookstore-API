@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const bookSchema = mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true
   },
@@ -44,4 +44,9 @@ module.exports.getBooks = (callback, limit) => {
 
 module.exports.getBookById = (id, callback) => {
   Book.findById(id, callback);
+}
+
+// Add Book
+module.exports.addBook = (book, callback) => {
+  Book.create(book, callback);
 }
