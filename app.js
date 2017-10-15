@@ -17,6 +17,12 @@ app.get('/', (req, res) => {
   res.send('express');
 });
 
+/*
+  ====================================
+                Genre 
+  ====================================
+*/
+
 app.get('/api/genres', (req, res) => {
   Genre.getGenres((err, genres) => {
     if (err) throw err;
@@ -51,6 +57,12 @@ app.delete('/api/genres/:_id', (req, res) => {
     res.json(genre);
   });
 });
+
+/*
+  ====================================
+                Book 
+  ====================================
+*/
 
 app.get('/api/books', (req, res) => {
   Book.getBooks((err, books) => {
@@ -94,7 +106,7 @@ app.delete('/api/books/:_id', (req, res) => {
   });
 });
 
-//Set Port
+// Set Port
 const port = process.env.PORT || '3001';
 app.set('port', port);
 

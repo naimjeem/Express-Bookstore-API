@@ -38,10 +38,12 @@ const bookSchema = mongoose.Schema({
 
 const Book = module.exports = mongoose.model('Book', bookSchema);
 
+// Get Book List
 module.exports.getBooks = (callback, limit) => {
   Book.find(callback).limit(limit);
 }
 
+// Get a Single Book
 module.exports.getBookById = (id, callback) => {
   Book.findById(id, callback);
 }
