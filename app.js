@@ -75,6 +75,16 @@ app.post('/api/books', (req, res) => {
   });
 });
 
+app.put('/api/books/:_id', (req, res) => {
+	let id = req.params._id;
+  let book = req.body;
+  
+	Book.updateBook(id, book, {}, (err, book) => {
+		if(err)	throw err;		
+		res.json(book);
+	});
+});
+
 //Set Port
 const port = process.env.PORT || '3001';
 app.set('port', port);
